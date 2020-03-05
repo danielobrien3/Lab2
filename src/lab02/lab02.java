@@ -31,7 +31,9 @@ public class lab02 {
 		SampleProvider sideSampler = sideSensor.getMode("Distance");
 		float[] sideSamples = new float[sideSampler.sampleSize()];
 		while(true) {
+			sideSampler.fetchSample(sideSamples, 0);
 			String str = Float.toString(sideSamples[0]);
+			//String str = Float.toString(sideSampler.fetchSample(0, offset););
 			lcddisplay.drawString(str, 2, 4);
 		}
 	}
