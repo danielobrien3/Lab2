@@ -25,9 +25,9 @@ public class lab02 {
 		
 		RegulatedMotor mLeft = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor mRight = new EV3LargeRegulatedMotor(MotorPort.D);
-		float kp = 2000;
-		float kd = 1f;
-		float ki = 10;
+		float kp = 8000;
+		float kd = 20f;
+		float ki = 1;
 		
 		SensorModes sideSensor = new NXTUltrasonicSensor(sidePort);
 		SensorModes frontSensor = new NXTUltrasonicSensor(frontPort);
@@ -59,8 +59,11 @@ public class lab02 {
 			int rightSpeed = (int)(200 + kp*error);
 			rightSpeed += derivative;
 			rightSpeed += integral;
-			if(rightSpeed < 125 ) {
-				rightSpeed = 125;
+			if(rightSpeed < 150 ) {
+				rightSpeed = 150;
+			}
+			if(rightSpeed > 600) {
+				rightSpeed = 600;
 			}
 			mRight.setSpeed(rightSpeed);
 			
