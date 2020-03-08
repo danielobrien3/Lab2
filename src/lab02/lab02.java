@@ -49,6 +49,11 @@ public class lab02 {
 			float timeDiff = (timeEnd - timeStart) *1000;
 			float sideReading = sideSamples[0];
 			float frontReading = frontSamples[0];
+			if(frontReading <= 0.4f) {
+				mLeft.setSpeed(0);
+				mRight.rotate(420);
+				mLeft.setSpeed(200);
+			}
 			float error = sideReading - 0.3f;
 			if(error > 1) {
 				error = 1;
@@ -71,7 +76,7 @@ public class lab02 {
 			String str2 = Float.toString(frontSamples[0]);
 			lcddisplay.clear();
 			lcddisplay.drawInt((int)integral, 2, 4);
-			lcddisplay.drawInt(rightSpeed, 2, 6);
+			lcddisplay.drawString(str2, 2, 6);
 		}
 	}
 }
